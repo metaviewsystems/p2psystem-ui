@@ -63,7 +63,7 @@
               "browserTarget": "p2psystem-ui:build:production"
             },
             "development": {
-              "browserTarget": "p2psystem-ui:build:development"
+              "browserTarget": "p2psystem-ui:build:development"             
             }
           },
           "defaultConfiguration": "development"
@@ -87,6 +87,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []

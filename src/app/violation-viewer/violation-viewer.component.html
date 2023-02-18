@@ -1,0 +1,81 @@
+<div class="container">
+  <h1>Violation Info</h1>
+  <button type="button" class="btn btn-danger" (click)="LogOut()">Log out</button>
+</div>
+
+
+
+<div class="container-fluid">
+  <h1> List of Violations</h1>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let viol of Violations.data | paginate : {
+            itemsPerPage: pageSize,
+            currentPage: page,
+            totalItems: count
+          };
+          let i = index">
+          <button type="button" class="btn btn-success" (click)="getviodetails(viol.pkId)">{{viol.pkId}} </button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <h3>Violation Details</h3>
+      <div *ngIf="currentviolation">
+        <p>
+          License State : {{currentviolation.data.licenseState}}
+        </p>
+        <p>
+          License Number : {{currentviolation.data.licenseNumber}}
+        </p>
+        <p>
+          Location : {{currentviolation.data.location}}
+        </p>
+        <p>
+          PostedSpeed : {{currentviolation.data.postedSpeed}} km/hr
+        </p>
+        <p>
+          VehicleSpeed : {{currentviolation.data.vehicleSpeed}} km/hr
+        </p>
+        <p>
+          Violation Date & Time : {{currentviolation.data.violationdate | date:'yyyy-MM-dd HH:mm:ss'}}
+        </p>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <ul ngbNav #nav="ngbNav" class="nav-tabs">
+        <li [ngbNavItem]="1">
+          <a ngbNavLink>Image 1 </a>
+          <ng-template ngbNavContent>
+            <a href="{{imageAsource}}" target="_blank">
+              <img src="{{imageAsource}}" height="600px" width="600px" ngbTooltip="Click here to view image">
+            </a>
+
+          </ng-template>
+        </li>
+
+        <li [ngbNavItem]="2">
+          <a ngbNavLink>Image 2 </a>
+          <ng-template ngbNavContent>
+            <a href="{{imageBsource}}" target="_blank">
+              <img src="{{imageBsource}}" height="600px" width="600px" ngbTooltip="Click here to view image">
+            </a>
+          </ng-template>
+        </li>
+      </ul>
+
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="col-sm-4">
+  <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true"
+    (pageChange)="handlePageChange($event)"></pagination-controls>
+</div>
