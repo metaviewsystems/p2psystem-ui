@@ -17,7 +17,7 @@ export class ViolationViewerComponent implements OnInit {
 
   page = 1;
   count = 0;
-  pageSize = 10;
+  pageSize = 20;
   pageSizes = [10, 20, 30];
 
   imageAsource = '';
@@ -30,15 +30,14 @@ export class ViolationViewerComponent implements OnInit {
     private cookieService: CookieService
   ) {}
   ngOnInit() {
+    this.Violations.data = null;
     this.fetchViolations();
     //this.currentviolation = new this.Violations();
   }
 
   fetchViolations() {
     return this.httpService.getViolations().subscribe((data: {}) => {
-      console.log(data);
       this.Violations = data;
-      //this.getviodetails(1);
     });
   }
 
@@ -55,7 +54,6 @@ export class ViolationViewerComponent implements OnInit {
 
   getviodetails(pkId: number) {
     return this.httpService.getViolationDetails(pkId).subscribe((data: {}) => {
-      console.log(data);
       this.currentviolation = data;
       this.imageAsource = this.currentviolation.data.imageA;
       this.imageBsource = this.currentviolation.data.imageB;
