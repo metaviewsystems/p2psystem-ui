@@ -16,7 +16,8 @@
             currentPage: page,
             totalItems: count
           };
-          let i = index">
+          let i = index"
+          [class.active]="currentviolation != null && viol.licenseNumber === currentviolation.data.licenseNumber">
           <button type="button" class="btn btn-success" (click)="getviodetails(viol.pkId)">{{viol.pkId}} </button>
         </li>
       </ul>
@@ -34,10 +35,10 @@
           Location : {{currentviolation.data.location}}
         </p>
         <p>
-          PostedSpeed : {{currentviolation.data.postedSpeed}} km/hr
+          Posted Speed : {{currentviolation.data.postedSpeed}} km/hr
         </p>
         <p>
-          VehicleSpeed : {{currentviolation.data.vehicleSpeed}} km/hr
+          Vehicle Speed : {{currentviolation.data.vehicleSpeed}} km/hr
         </p>
         <p>
           Violation Date & Time : {{currentviolation.data.violationdate | date:'yyyy-MM-dd HH:mm:ss'}}
@@ -50,7 +51,7 @@
           <a ngbNavLink>Image 1 </a>
           <ng-template ngbNavContent>
             <a href="{{imageAsource}}" target="_blank">
-              <img src="{{imageAsource}}" height="600px" width="600px" ngbTooltip="Click here to view image">
+              <img src="{{imageAsource}}" ngbTooltip="Click here to view image">
             </a>
 
           </ng-template>
@@ -60,7 +61,7 @@
           <a ngbNavLink>Image 2 </a>
           <ng-template ngbNavContent>
             <a href="{{imageBsource}}" target="_blank">
-              <img src="{{imageBsource}}" height="600px" width="600px" ngbTooltip="Click here to view image">
+              <img src="{{imageBsource}}" ngbTooltip="Click here to view image">
             </a>
           </ng-template>
         </li>
